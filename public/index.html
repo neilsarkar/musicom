@@ -40,8 +40,29 @@
         <input type="text" name="links" />
       </label>
 
+      <fieldset>
+        <label>
+          Card Number
+          <input type="tel" name="card_number"/>
+        </label>
+        <label>
+          Month
+          <input type="tel" name="expiration_month" placeholder="MM"/>
+        </label>
+        <label>
+          Year
+          <input type="tel" name="expiration_year" placeholder="YYYY"/>
+        </label>
+        <label>
+          CVC
+          <input type="tel" name="cvc"/>
+        </label>
+      </fieldset>
+
       <input type="submit" value="Register" />
     </form>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="/assets/bundle.js" ></script>
   </body>
 </html>

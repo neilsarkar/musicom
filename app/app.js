@@ -1,4 +1,8 @@
-var form = document.getElementById('form');
+var form    = document.getElementById('form');
+var request = require('./request');
+var stripe  = require('./stripe');
+
+
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -12,32 +16,17 @@ form.addEventListener('submit', function(e) {
     links: form.links.value,
   }
 
-  request('POST', '/registrations', { team: team }, function yes(body) {
-    console.log("Got response", body);
-  }, function no(status, body, err) {
-    console.error("Request failed", status, body, err);
+  stripe.getCardToken(form.card_number.value, form.expiration_month.value, form.expiration_year.value, form.cvc.value, function(err, stripeResponse) {
+    if( err ) { console.error("Error"); return alert("Sorry, something went wrong."); }
+
+    team.stripe_token = stripeResponse.id;
+
+    request('POST', '/registrations', { team: team }, function yes(body) {
+      console.log("Got response", body);
+    }, function no(status, body, err) {
+      console.error("Request failed", status, body, err);
+    });
   });
 
   return false;
 });
-
-
-function request(method, url, body, success, failure) {
-  var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-  xmlhttp.open(method.toUpperCase(), url);
-  xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-  body = body && JSON.stringify(body);
-  xmlhttp.onreadystatechange = function() {
-    if( xmlhttp.readyState !== XMLHttpRequest.DONE ) { return; }
-
-    if( xmlhttp.status < 200 || xmlhttp.status > 299 ) {
-      return failure && failure(xmlhttp.status, xmlhttp.responseText, xmlhttp);
-    }
-
-    var response = xmlhttp.responseText && JSON.parse(xmlhttp.responseText);
-    return success && success(response);
-  }
-
-  xmlhttp.send(body);
-}

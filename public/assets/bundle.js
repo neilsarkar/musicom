@@ -399,9 +399,13 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	var form = document.getElementById('form');
+	var form    = document.getElementById('form');
+	var request = __webpack_require__(6);
+	var stripe  = __webpack_require__(8);
+
+
 
 	form.addEventListener('submit', function(e) {
 	  e.preventDefault();
@@ -415,17 +419,27 @@
 	    links: form.links.value,
 	  }
 
-	  request('POST', '/registrations', { team: team }, function yes(body) {
-	    console.log("Got response", body);
-	  }, function no(status, body, err) {
-	    console.error("Request failed", status, body, err);
+	  stripe.getCardToken(form.card_number.value, form.expiration_month.value, form.expiration_year.value, form.cvc.value, function(err, stripeResponse) {
+	    if( err ) { console.error("Error"); return alert("Sorry, something went wrong."); }
+
+	    team.stripe_token = stripeResponse.id;
+
+	    request('POST', '/registrations', { team: team }, function yes(body) {
+	      console.log("Got response", body);
+	    }, function no(status, body, err) {
+	      console.error("Request failed", status, body, err);
+	    });
 	  });
 
 	  return false;
 	});
 
 
-	function request(method, url, body, success, failure) {
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = function request(method, url, body, success, failure) {
 	  var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
 	  xmlhttp.open(method.toUpperCase(), url);
 	  xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -443,6 +457,52 @@
 	  }
 
 	  xmlhttp.send(body);
+	}
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	var environments = {
+	  development: {
+	    stripe: {
+	      publishable_key: 'pk_AOgDoSwZNnA6FsWn8kaASkUof29qk'
+	    }
+	  },
+	  production: {
+	    stripe: {
+	      publishable_key: 'pk_Ud9pbfNE5rUTGl9uAq9rXDiShUuRO'
+	    }
+	  }
+	}
+
+	module.exports = window.location.href.match(/localhost/) ? environments.development : environments.production;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var key = __webpack_require__(7).stripe.publishable_key;
+
+	Stripe.setPublishableKey(key);
+
+	module.exports = {
+	  getCardToken: function(cardNumber, expirationMonth, expirationYear, cvc, cb) {
+	    Stripe.card.createToken({
+	      number: cardNumber,
+	      exp_month: expirationMonth,
+	      exp_year: expirationYear,
+	      cvc: cvc
+	    }, function(status, response) {
+	      if( status < 200 || status > 299 ) {
+	        return cb && cb(response);
+	      }
+
+	      cb && cb(null, response);
+	    });
+	  }
 	}
 
 
