@@ -1,0 +1,25 @@
+{
+  "name": "musicom",
+  "version": "1.0.0",
+  "description": "LA Musical Comedy Improv Festival",
+  "main": "app.js",
+  "dependencies": {
+    "css-loader": "^0.23.1",
+    "express": "^4.13.4",
+    "style-loader": "^0.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:neilsarkar/musicom.git"
+  },
+  "author": "Neil Sarkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neilsarkar/musicom/issues"
+  },
+  "homepage": "https://github.com/neilsarkar/musicom"
+}
