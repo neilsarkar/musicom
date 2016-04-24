@@ -4,8 +4,10 @@
   "description": "LA Musical Comedy Improv Festival",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
+    "mongodb": "^2.1.16",
     "style-loader": "^0.13.1"
   },
   "devDependencies": {},

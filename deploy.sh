@@ -14,5 +14,6 @@ rsync \
 
 ssh "$host" "cd /opt/src/$folder && NODE_ENV=production npm install"
 
+ssh "$host" "cd /opt/src/$folder && NODE_ENV=production node app.js"
 
 # wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -

@@ -1,7 +1,4 @@
-document.write('World');
-
 var form = document.getElementById('form');
-
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -15,7 +12,7 @@ form.addEventListener('submit', function(e) {
     links: form.links.value,
   }
 
-  request('POST', '/cool', { team: team }, function yes(body) {
+  request('POST', '/registrations', { team: team }, function yes(body) {
     console.log("Got response", body);
   }, function no(status, body, err) {
     console.error("Request failed", status, body, err);
@@ -34,11 +31,11 @@ function request(method, url, body, success, failure) {
   xmlhttp.onreadystatechange = function() {
     if( xmlhttp.readyState !== XMLHttpRequest.DONE ) { return; }
 
-    if( xmlhttp.status != 200 ) {
+    if( xmlhttp.status < 200 || xmlhttp.status > 299 ) {
       return failure && failure(xmlhttp.status, xmlhttp.responseText, xmlhttp);
     }
 
-    var response = JSON.parse(xmlhttp.responseText);
+    var response = xmlhttp.responseText && JSON.parse(xmlhttp.responseText);
     return success && success(response);
   }
 

@@ -84,7 +84,7 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: block;\n}\n\ninput {\n  display: block;\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: block;\n}\n\ninput {\n  display: block;\n  font-weight: normal;\n}\n", ""]);
 
 	// exports
 
@@ -401,10 +401,7 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	document.write('World');
-
 	var form = document.getElementById('form');
-
 
 	form.addEventListener('submit', function(e) {
 	  e.preventDefault();
@@ -418,7 +415,7 @@
 	    links: form.links.value,
 	  }
 
-	  request('POST', '/cool', { team: team }, function yes(body) {
+	  request('POST', '/registrations', { team: team }, function yes(body) {
 	    console.log("Got response", body);
 	  }, function no(status, body, err) {
 	    console.error("Request failed", status, body, err);
@@ -437,11 +434,11 @@
 	  xmlhttp.onreadystatechange = function() {
 	    if( xmlhttp.readyState !== XMLHttpRequest.DONE ) { return; }
 
-	    if( xmlhttp.status != 200 ) {
+	    if( xmlhttp.status < 200 || xmlhttp.status > 299 ) {
 	      return failure && failure(xmlhttp.status, xmlhttp.responseText, xmlhttp);
 	    }
 
-	    var response = JSON.parse(xmlhttp.responseText);
+	    var response = xmlhttp.responseText && JSON.parse(xmlhttp.responseText);
 	    return success && success(response);
 	  }
 
