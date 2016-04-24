@@ -46,7 +46,7 @@
 
 	__webpack_require__(1);
 
-	__webpack_require__(6);
+	__webpack_require__(5);
 
 
 /***/ },
@@ -84,7 +84,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-color: pink;\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: block;\n}\n\ninput {\n  display: block;\n}\n", ""]);
 
 	// exports
 
@@ -398,11 +398,29 @@
 
 
 /***/ },
-/* 5 */,
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 	document.write('World');
+
+	var form = document.getElementById('form');
+
+
+	form.addEventListener('submit', function(e) {
+	  e.preventDefault();
+
+	  var team = {
+	    name: form.name.value,
+	    members: form.members.value,
+	    coaches: form.coaches.value,
+	    schools: form.schools.value,
+	    description: form.description.value,
+	    links: form.links.value,
+	  }
+
+	  console.log("Got team", team);
+	  return false;
+	});
 
 
 /***/ }
