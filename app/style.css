@@ -55,7 +55,7 @@ label span {
   visibility: hidden;
 }
 label span.shown {
-  visibility: visible; 
+  visibility: visible;
 }
 fieldset { border: 0; margin: 0; padding: 0; }
 
