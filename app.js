@@ -9,11 +9,26 @@ var port       = process.env.NODE_APP_PORT || 3000;
 
 var registrations;
 
+mongodb.MongoClient.connect('mongodb://localhost/test', function(err, db) {
+  if( err ) { throw err; }
+
+  registrations = db.collection('registrations');
+})
+
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-app.post('/registrations', function(req,res) {
+app.post('/registrations', createRegistration);
+
+app.get('/registrations', listRegistrations);
+
+app.listen(port, function(err) {
+  if( err ) { throw err; }
+  console.log("Listening on port", port, "...");
+})
+
+function createRegistration(req, res) {
   if( !req.body || !req.body.team ) { return res.status(422).json({error: 'You must provide a team object.'}); }
 
   var team = req.body.team;
@@ -28,7 +43,7 @@ app.post('/registrations', function(req,res) {
       stripe.charges.create({
         amount: 1000,
         currency: "usd",
-        description: "Charge from app.js",
+        description: "Registration Fee",
         customer: customer.id,
       }, function(err, charge) {
         if( err ) { console.error(err); return res.status(500).json({error: 'Something went wrong.'}); }
@@ -47,15 +62,12 @@ app.post('/registrations', function(req,res) {
       res.sendStatus(204);
     });
   }
-});
+};
 
-mongodb.MongoClient.connect('mongodb://localhost/test', function(err, db) {
-  if( err ) { throw err; }
+function listRegistrations(req, res) {
+  registrations.find({}).toArray(function(err, registrations) {
+    if( err ) { console.error(err); return res.status(500).json({error: 'Something went wrong.'}); }
 
-  registrations = db.collection('registrations');
-})
-
-app.listen(port, function(err) {
-  if( err ) { throw err; }
-  console.log("Listening on port", port, "...");
-})
+    res.json({registrations: registrations});
+  })
+}
