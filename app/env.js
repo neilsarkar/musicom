@@ -1,12 +1,12 @@
 var environments = {
   development: {
     stripe: {
-      publishable_key: 'pk_AOgDoSwZNnA6FsWn8kaASkUof29qk'
+      publishable_key: 'pk_test_z2DDmGuncmSIKzUrkhuGTuxu'
     }
   },
   production: {
     stripe: {
-      publishable_key: 'pk_Ud9pbfNE5rUTGl9uAq9rXDiShUuRO'
+      publishable_key: 'pk_live_DniPSRWT0gFTvi3dchAqQCwK'
     }
   }
 }
