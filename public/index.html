@@ -19,7 +19,7 @@
     </header>
 
     <form id="form">
-      <fieldset class="team">
+      <fieldset class="team payment">
         <p>
           Registration is $10 and open from now until <strong>June 30th</strong>.
         </p>
@@ -45,27 +45,29 @@
         </label>
       </fieldset>
 
-      <fieldset class="payment">
+      <fieldset class="paymentz">
         <p>
           The entry fee is $10. We use this to pay for the space, beer, accompanist and Rian's corporate jet.
+          <br /><br />
+          You can also leave this blank and Venmo Rian.
         </p>
 
         <label>
-          <span>Card Number</span>
-          <input type="tel" name="card_number" placeholder="Card Number"/>
+          <span class="shown">Card Number</span>
+          <input type="tel" name="card_number"/>
         </label>
         <div class="card-details">
-          <label class="">
-            <span>Exp. Month</span>
+          <label class="exp-month">
+            <span class="shown">Exp. Month</span>
             <input type="tel" name="expiration_month" placeholder="MM"/>
           </label>
-          <label>
-            <span>Exp. Year</span>
+          <label class="exp-year">
+            <span class="shown">Exp. Year</span>
             <input type="tel" name="expiration_year" placeholder="YYYY"/>
           </label>
-          <label>
-            <span>CVC</span>
-            <input type="tel" name="CVC"/>
+          <label class="cvc">
+            <span class="shown">CVC</span>
+            <input type="tel" name="cvc"/>
           </label>
         </div>
       </fieldset>
@@ -76,7 +78,7 @@
     </form>
 
     <footer>
-      more info: <a href="mailto:kountzrd@gmail.com">kountzrd@gmail.com</a>
+      more info: <a href="mailto:lamusicalcomedyfest@gmail.com">lamusicalcomedyfest@gmail.com</a>
     </footer>
 
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
