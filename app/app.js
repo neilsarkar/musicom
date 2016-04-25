@@ -5,6 +5,7 @@ var elements = require('./elements');
 var form           = document.getElementById('form');
 var teamSection    = document.querySelector('.team');
 var paymentSection = document.querySelector('.payment');
+var thanksSection  = document.querySelector('.thanks');
 
 // Show label only if placeholder is not shown
 elements.all('[placeholder]').forEach(function(input) {
@@ -35,14 +36,16 @@ form.addEventListener('submit', function(e) {
       team.stripe_token = stripeResponse.id;
 
       request('POST', '/registrations', { team: team }, function yes(body) {
-        console.log("Got response", body);
+        form.style.display = 'none';
+        thanksSection.style.display = 'block';
       }, function no(status, body, err) {
         console.error("Request failed", status, body, err);
       });
     });
   } else {
     request('POST', '/registrations', { team: team }, function yes(body) {
-      console.log("Got response", body);
+      form.style.display = 'none';
+      thanksSection.style.display = 'block';
     }, function no(status, body, err) {
       console.error("Request failed", status, body, err);
     });

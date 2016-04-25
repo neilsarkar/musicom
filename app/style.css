@@ -2,10 +2,21 @@
 
 body {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+  color: #aaa;
+  background-image: url("https://s3.amazonaws.com/f.cl.ly/items/0I1G0c2q3j1o2k0c2O2N/920687_1304249762925882_7930568496187212230_o.jpg?v=1ceaf997");
+  background-size: cover;
+  background-position: center;
+}
+
+html, body {
+  height: 100%;
+}
+#page { min-height: 100%; }
+
+
+#page {
   padding: 1em;
-  color: #666;
-  /*background-image: url("https://s3.amazonaws.com/f.cl.ly/items/0I1G0c2q3j1o2k0c2O2N/920687_1304249762925882_7930568496187212230_o.jpg?v=1ceaf997");
-  background-size: cover;*/
+  background-color: rgba(0,0,0,0.7);
 }
 
 header {
@@ -14,19 +25,20 @@ header {
   font-size: 50px;
   line-height: 38px;
   color: #fff;
-  text-shadow: 0 0 10px blue;
+  text-shadow: 0 0 10px skyblue;
 }
 
 header small {
   text-shadow: none;
-  color: blue;
+  color: skyblue;
   font-size: 20px;
   display: block;
   margin-top: .5em;
 }
 
-header small a {
+a {
   text-decoration: underline;
+  color: skyblue !important;
 }
 
 label {
@@ -48,6 +60,10 @@ input:not([type=submit]) {
 }
 input[type=submit] {
   width: auto;
+  background-color: skyblue;
+  color: white;
+  border: 0;
+  padding: .5em 1em;
 }
 textarea {
   width: 100%;
@@ -73,6 +89,7 @@ footer { text-align: right; font-size: 70%; margin-top: 2em; }
 .show { display: block; }
 .hide { display: none; }
 
+.thanks { display: none; }
 .submit {
   margin-top: 1em;
 }

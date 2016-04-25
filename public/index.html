@@ -16,78 +16,83 @@
     <title>LA Musical Comedy Fest</title>
   </head>
   <body>
-    <header>
-      LA Musical
-      Comedy Fest
+    <div id="page">
+      <header>
+        LA Musical
+        Comedy Fest
 
-      <small>
-        <a target="_blank" href="https://www.facebook.com/tradeoffmusicalimprov">July 30th, 2017</a> at <a target="_blank" href="https://www.google.com/maps/dir/''/1607+N+Vermont+Ave,+Los+Angeles,+CA+90027/@34.1005651,-118.3625421,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x80c2c0ac6dd11459:0x5da3cc3dba391290!2m2!1d-118.292502!2d34.100585">The Clubhouse</a>
-      </small>
-    </header>
+        <small>
+          <a target="_blank" href="https://www.facebook.com/tradeoffmusicalimprov">July 30th, 2017</a> at <a target="_blank" href="https://www.google.com/maps/dir/''/1607+N+Vermont+Ave,+Los+Angeles,+CA+90027/@34.1005651,-118.3625421,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x80c2c0ac6dd11459:0x5da3cc3dba391290!2m2!1d-118.292502!2d34.100585">The Clubhouse</a>
+        </small>
+      </header>
 
-    <form id="form">
-      <fieldset class="team">
-        <p>
-          Registration is $10 and open from now until <strong>June 30th</strong>.
-        </p>
+      <form id="form">
+        <fieldset class="team">
+          <p>
+            Registration is $10 and open from now until <strong>June 30th</strong>.
+          </p>
 
-        <label>
-          <span>Team Name</span>
-          <input type="text" name="name" placeholder="Team Name"/>
-        </label>
-
-        <label>
-          <span>Your Email</span>
-          <input type="email" name="email" placeholder="Your Email"/>
-        </label>
-
-        <label>
-          <span>Team Members</span>
-          <textarea name="members" placeholder="Team Members"></textarea>
-        </label>
-
-        <label>
-          <span>Your form, school affiliation, coach, links...</span>
-          <textarea name="description" placeholder="Your form, school affiliation, coach, links..."></textarea>
-        </label>
-      </fieldset>
-
-      <fieldset class="payment">
-        <p>
-          The entry fee is $10. We use this to pay for the space, beer, accompanist and Rian's corporate jet.
-          <br /><br />
-          You can also leave this blank and Venmo Rian.
-        </p>
-
-        <label>
-          <span class="shown">Card Number</span>
-          <input type="tel" name="card_number"/>
-        </label>
-        <div class="card-details">
-          <label class="exp-month">
-            <span class="shown">Exp. Month</span>
-            <input type="tel" name="expiration_month" placeholder="MM"/>
+          <label>
+            <span>Team Name</span>
+            <input type="text" name="name" placeholder="Team Name"/>
           </label>
-          <label class="exp-year">
-            <span class="shown">Exp. Year</span>
-            <input type="tel" name="expiration_year" placeholder="YYYY"/>
+
+          <label>
+            <span>Your Email</span>
+            <input type="email" name="email" placeholder="Your Email"/>
           </label>
-          <label class="cvc">
-            <span class="shown">CVC</span>
-            <input type="tel" name="cvc"/>
+
+          <label>
+            <span>Team Members</span>
+            <textarea name="members" placeholder="Team Members"></textarea>
           </label>
+
+          <label>
+            <span>Your form, school affiliation, coach, links...</span>
+            <textarea name="description" placeholder="Your form, school affiliation, coach, links..."></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset class="payment">
+          <p>
+            The entry fee is $10. We use this to pay for the space, beer, accompanist and Rian's corporate jet.
+            <br /><br />
+            You can also leave this blank and Venmo Rian.
+          </p>
+
+          <label>
+            <span class="shown">Card Number</span>
+            <input type="tel" name="card_number"/>
+          </label>
+          <div class="card-details">
+            <label class="exp-month">
+              <span class="shown">Exp. Month</span>
+              <input type="tel" name="expiration_month" placeholder="MM"/>
+            </label>
+            <label class="exp-year">
+              <span class="shown">Exp. Year</span>
+              <input type="tel" name="expiration_year" placeholder="YYYY"/>
+            </label>
+            <label class="cvc">
+              <span class="shown">CVC</span>
+              <input type="tel" name="cvc"/>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="submit">
+          <input type="submit" value="Register" />
         </div>
-      </fieldset>
+      </form>
 
-      <div class="submit">
-        <input type="submit" value="Register" />
-      </div>
-    </form>
+      <header class="thanks hide">
+        Thanks for registering!
+      </header>
 
-    <footer>
-      more info: <a href="mailto:lamusicalcomedyfest@gmail.com">lamusicalcomedyfest@gmail.com</a>
-    </footer>
-
+      <footer>
+        more info: <a href="mailto:lamusicalcomedyfest@gmail.com">lamusicalcomedyfest@gmail.com</a>
+      </footer>
+    </div>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="/assets/bundle.js" ></script>
   </body>
