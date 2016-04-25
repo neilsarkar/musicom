@@ -84,7 +84,7 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: block;\n}\n\ninput {\n  display: block;\n  font-weight: normal;\n}\n", ""]);
+	exports.push([module.id, "* { box-sizing: border-box; }\n\nbody {\n  font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;\n  padding: 1em;\n  color: #666;\n}\n\nheader {\n  text-align: center;\n  font-family: 'Indie Flower', cursive;\n  font-size: 50px;\n  line-height: 38px;\n  color: #fff;\n  text-shadow: 0 0 10px blue;\n}\n\nheader small {\n  text-shadow: none;\n  color: blue;\n  font-size: 20px;\n  display: block;\n  margin-top: .5em;\n}\n\nheader small a {\n  text-decoration: underline;\n}\n\nlabel {\n  display: block;\n  font-weight: normal;\n  margin-bottom: .5em;\n}\nlabel span {\n  display: block;\n  color: #919191;\n  margin-bottom: .2em;\n}\ninput {\n  width: 100%;\n}\n.submit {\n  text-align: center;\n}\ninput[type=submit] {\n  width: auto;\n}\ntextarea {\n  width: 100%;\n}\nlabel span {\n  visibility: hidden;\n}\nfieldset { border: 0; margin: 0; padding: 0; }\n\nfooter { text-align: right; font-size: 70%; margin-top: 2em; }\n\n.payment {\n  display: none;\n}\n\n.show { display: block; }\n.hide { display: none; }\n\n.submit {\n  margin-top: 1em;\n}\n", ""]);
 
 	// exports
 
@@ -401,14 +401,28 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var form    = document.getElementById('form');
-	var request = __webpack_require__(6);
-	var stripe  = __webpack_require__(8);
+	var request  = __webpack_require__(6);
+	var stripe   = __webpack_require__(8);
+	var elements = __webpack_require__(9);
 
+	var form           = document.getElementById('form');
+	var teamSection    = document.querySelector('.team');
+	var paymentSection = document.querySelector('.payment');
 
+	// Show label only if placeholder is not shown
+	elements.all('[placeholder]').forEach(function(input) {
+	  input.addEventListener('keyup', function(e) {
+	    input.parentNode.querySelector('span').style.visibility = input.value ? 'visible' : 'hidden';
+	  })
+	});
 
 	form.addEventListener('submit', function(e) {
 	  e.preventDefault();
+
+	  if( paymentSection.className.indexOf('show') == -1 ) {
+	    teamSection.className += ' hide';
+	    return paymentSection.className += ' show';
+	  }
 
 	  var team = {
 	    name: form.name.value,
@@ -503,6 +517,19 @@
 	      cb && cb(null, response);
 	    });
 	  }
+	}
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  all: all
+	}
+
+	function all(selector) {
+	  return Array.prototype.slice.call(document.querySelectorAll(selector));
 	}
 
 

@@ -4,63 +4,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
     <title>LA Musical Comedy Fest</title>
   </head>
   <body>
+    <header>
+      LA Musical
+      Comedy Fest
+
+      <small>
+        <a target="_blank" href="https://www.facebook.com/tradeoffmusicalimprov">July 30th, 2017</a> at <a target="_blank" href="https://www.google.com/maps/dir/''/1607+N+Vermont+Ave,+Los+Angeles,+CA+90027/@34.1005651,-118.3625421,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x80c2c0ac6dd11459:0x5da3cc3dba391290!2m2!1d-118.292502!2d34.100585">The Clubhouse</a>
+      </small>
+    </header>
 
     <form id="form">
-      <label>
-        Name
-        <input type="text" name="name" />
-      </label>
+      <fieldset class="team">
+        <p>
+          Registration is $10 and open from now until <strong>June 30th</strong>.
+        </p>
 
-      <label>
-        Members
-        <input type="text" name="members" />
-      </label>
-
-      <label>
-        Coaches
-        <input type="text" name="coaches" />
-      </label>
-
-      <label>
-        Schools
-        <input type="text" name="schools" />
-      </label>
-
-      <label>
-        Description
-        <input type="text" name="description" />
-      </label>
-
-      <label>
-        Links
-        <input type="text" name="links" />
-      </label>
-
-      <fieldset>
         <label>
-          Card Number
-          <input type="tel" name="card_number"/>
+          <span>Team Name</span>
+          <input type="text" name="name" placeholder="Team Name"/>
         </label>
+
         <label>
-          Month
-          <input type="tel" name="expiration_month" placeholder="MM"/>
+          <span>Your Email</span>
+          <input type="email" name="email" placeholder="Your Email"/>
         </label>
+
         <label>
-          Year
-          <input type="tel" name="expiration_year" placeholder="YYYY"/>
+          <span>Team Members</span>
+          <textarea name="members" placeholder="Team Members"></textarea>
         </label>
+
         <label>
-          CVC
-          <input type="tel" name="cvc"/>
+          <span>Your form, school affiliation, coach, links...</span>
+          <textarea name="description" placeholder="Your form, school affiliation, coach, links..."></textarea>
         </label>
       </fieldset>
 
-      <input type="submit" value="Register" />
+      <fieldset class="payment">
+        <p>
+          The entry fee is $10. We use this to pay for the space, beer, accompanist and Rian's corporate jet.
+        </p>
+
+        <label>
+          <span>Card Number</span>
+          <input type="tel" name="card_number" placeholder="Card Number"/>
+        </label>
+        <div class="card-details">
+          <label class="">
+            <span>Exp. Month</span>
+            <input type="tel" name="expiration_month" placeholder="MM"/>
+          </label>
+          <label>
+            <span>Exp. Year</span>
+            <input type="tel" name="expiration_year" placeholder="YYYY"/>
+          </label>
+          <label>
+            <span>CVC</span>
+            <input type="tel" name="CVC"/>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="submit">
+        <input type="submit" value="Register" />
+      </div>
     </form>
+
+    <footer>
+      more info: <a href="mailto:kountzrd@gmail.com">kountzrd@gmail.com</a>
+    </footer>
 
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="/assets/bundle.js" ></script>

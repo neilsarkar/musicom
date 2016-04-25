@@ -1,11 +1,25 @@
-var form    = document.getElementById('form');
-var request = require('./request');
-var stripe  = require('./stripe');
+var request  = require('./request');
+var stripe   = require('./stripe');
+var elements = require('./elements');
 
+var form           = document.getElementById('form');
+var teamSection    = document.querySelector('.team');
+var paymentSection = document.querySelector('.payment');
 
+// Show label only if placeholder is not shown
+elements.all('[placeholder]').forEach(function(input) {
+  input.addEventListener('keyup', function(e) {
+    input.parentNode.querySelector('span').style.visibility = input.value ? 'visible' : 'hidden';
+  })
+});
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
+
+  if( paymentSection.className.indexOf('show') == -1 ) {
+    teamSection.className += ' hide';
+    return paymentSection.className += ' show';
+  }
 
   var team = {
     name: form.name.value,

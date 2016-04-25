@@ -1,8 +1,68 @@
-label {
-  display: block;
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+  padding: 1em;
+  color: #666;
 }
 
-input {
+header {
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-size: 50px;
+  line-height: 38px;
+  color: #fff;
+  text-shadow: 0 0 10px blue;
+}
+
+header small {
+  text-shadow: none;
+  color: blue;
+  font-size: 20px;
+  display: block;
+  margin-top: .5em;
+}
+
+header small a {
+  text-decoration: underline;
+}
+
+label {
   display: block;
   font-weight: normal;
+  margin-bottom: .5em;
+}
+label span {
+  display: block;
+  color: #919191;
+  margin-bottom: .2em;
+}
+input {
+  width: 100%;
+}
+.submit {
+  text-align: center;
+}
+input[type=submit] {
+  width: auto;
+}
+textarea {
+  width: 100%;
+}
+label span {
+  visibility: hidden;
+}
+fieldset { border: 0; margin: 0; padding: 0; }
+
+footer { text-align: right; font-size: 70%; margin-top: 2em; }
+
+.payment {
+  display: none;
+}
+
+.show { display: block; }
+.hide { display: none; }
+
+.submit {
+  margin-top: 1em;
 }
