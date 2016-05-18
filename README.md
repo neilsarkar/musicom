@@ -1,5 +1,9 @@
 # LA Musical Comedy Website
 
+## Deployment
+
+    $ ./deploy.sh
+
 TODO:
 
 * monit/etcd/forever
